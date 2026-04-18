@@ -10,7 +10,7 @@ import org.codebusters.demo.service.OrderService;
 import org.codebusters.demo.service.CustomUserDetailsService;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
 

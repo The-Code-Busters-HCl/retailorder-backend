@@ -8,25 +8,22 @@ import org.codebusters.demo.model.CartItem;
 import org.codebusters.demo.service.CartService;
 
 @RestController
-@RequestMapping("/api/cart")
+@RequestMapping("/cart")
 @RequiredArgsConstructor
 public class CartController {
 
     private final CartService cartService;
 
-    // ✅ Add item to cart
     @PostMapping("/add")
     public CartItem addToCart(@RequestBody CartItem item) {
         return cartService.addToCart(item);
     }
 
-    // ✅ Get user cart
     @GetMapping("/{userId}")
     public List<CartItem> getUserCart(@PathVariable Long userId) {
         return cartService.getUserCart(userId);
     }
 
-    // ✅ Remove item from cart
     @DeleteMapping("/remove/{id}")
     public String removeItem(@PathVariable Long id) {
         cartService.deleteItem(id);
