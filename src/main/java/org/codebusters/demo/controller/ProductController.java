@@ -9,7 +9,7 @@ import org.codebusters.demo.service.ProductService;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin
+
 @RequiredArgsConstructor
 public class ProductController {
 

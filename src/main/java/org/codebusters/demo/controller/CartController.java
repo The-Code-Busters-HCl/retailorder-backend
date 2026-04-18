@@ -14,28 +14,18 @@ public class CartController {
 
     private final CartService cartService;
 
-<<<<<<< HEAD
-=======
-    // Add item to cart
->>>>>>> 4a22e5e (Fixed /auth)
+
     @PostMapping("/add")
     public CartItem addToCart(@RequestBody CartItem item) {
         return cartService.addToCart(item);
     }
 
-<<<<<<< HEAD
-=======
-    // Get user cart
->>>>>>> 4a22e5e (Fixed /auth)
+
     @GetMapping("/{userId}")
     public List<CartItem> getUserCart(@PathVariable Long userId) {
         return cartService.getUserCart(userId);
     }
 
-<<<<<<< HEAD
-=======
-    //  Remove item from cart
->>>>>>> 4a22e5e (Fixed /auth)
     @DeleteMapping("/remove/{id}")
     public String removeItem(@PathVariable Long id) {
         cartService.deleteItem(id);

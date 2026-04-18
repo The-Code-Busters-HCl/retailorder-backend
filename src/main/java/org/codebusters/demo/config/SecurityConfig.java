@@ -30,7 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // ✅ VERY IMPORTANT (for POST)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // ✅ allow login/register
+                        .requestMatchers("/**").permitAll() // ✅ allow login/register
                         .anyRequest().authenticated() // protect others
                 )
                 .sessionManagement(session -> session
