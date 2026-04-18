@@ -13,23 +13,23 @@ public class ProductService {
 
     private final ProductRepository repo;
 
-    // ✅ Add product
+    // Add product
     public Product addProduct(Product p) {
         return repo.save(p);
     }
 
-    // ✅ Get product by ID
+    //  Get product by ID
     public Product getById(Long id) {
         return repo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
-    // ✅ Get all products
+    //  Get all products
     public List<Product> getAll() {
         return repo.findAll();
     }
 
-    // ✅ Update product
+    //  Update product
     public Product updateProduct(Long id, Product updatedProduct) {
         Product product = getById(id);
 
@@ -41,7 +41,7 @@ public class ProductService {
         return repo.save(product);
     }
 
-    // ✅ Delete product
+    //  Delete product
     public void deleteProduct(Long id) {
         Product product = getById(id);
         repo.delete(product);
