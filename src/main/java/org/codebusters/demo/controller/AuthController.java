@@ -25,11 +25,16 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
+    @GetMapping("/")
+    public String add() {
+        return "dhshdsjhdsd";
+    }
+
     @PostMapping("/register")
     public String register(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
-        return "User registered";
+        return String.valueOf(user.getId());
     }
 
     @PostMapping("/login")
