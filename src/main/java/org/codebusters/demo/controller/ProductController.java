@@ -1,54 +1,49 @@
 package org.codebusters.demo.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
-
-
-
+import org.codebusters.demo.model.Product;
+import org.codebusters.demo.service.ProductService;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/products")
 @CrossOrigin
+@RequiredArgsConstructor
 public class ProductController {
-    @GetMapping("/")
-    public String getAllProducts() {
-        return new String();
+
+    private final ProductService productService;
+
+    // ✅ Get all products
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return productService.getAll();
     }
 
+    // ✅ Get product by ID
     @GetMapping("/{id}")
-    public String getProdById(@PathVariable Long param) {
-        return new String();
-    }
-    
-
-    @PostMapping("/add")
-    public String postMethodName(@RequestBody String entity) {
-        //TODO: process POST request
-        
-        return entity;
-    }
-    
-    @PutMapping("/update/{id}")
-    public String putMethodName(@PathVariable Long id, @RequestBody String entity) {
-        //TODO: process PUT request
-
-        return entity;
-    }
-    
-    @DeleteMapping("/delete/{id}")
-    public String deleteItem(@PathVariable Long id) {
-        return "";
+    public Product getProductById(@PathVariable Long id) {
+        return productService.getById(id);
     }
 
-    
-    
+    // ✅ Add product
+    @PostMapping
+    public Product addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
+    }
+
+    // ✅ Update product
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Long id,
+                                 @RequestBody Product product) {
+        return productService.updateProduct(id, product);
+    }
+
+    // ✅ Delete product
+    @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return "Product deleted successfully";
+    }
 }
