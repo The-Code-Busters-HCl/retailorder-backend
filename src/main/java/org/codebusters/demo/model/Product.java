@@ -20,4 +20,9 @@ public class Product {
     private int stock;
 
     private String category;
+<<<<<<< HEAD
+    @Column(nullable = false)
+=======
+>>>>>>> 4a22e5e (Fixed /auth)
+    private String image;
 }
